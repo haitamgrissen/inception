@@ -1,8 +1,4 @@
-all: create_dirs add_host build up
-
-create_dirs:
-	mkdir -p /home//data/DB
-	mkdir -p /home//data/wordPress
+all: build up
 
 add_host:
 	echo "127.0.1.1       hgrissen.42.fr" >> /etc/hosts
@@ -20,8 +16,9 @@ up:
 clean:
 	docker-compose -f srcs/docker-compose.yml  down -v
 	docker system prune -a -f
-	docker network prune -f
-	docker volume prune -f
 	docker image prune -f
+	docker volume prune -f
+#	docker network prune -f
 fclean: clean
-	rm -Rf 
+	rm -rf srcs/mariadb/mariadb_mount/
+	mkdir srcs/mariadb/mariadb_mount/

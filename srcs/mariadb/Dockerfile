@@ -9,4 +9,13 @@ COPY 50-server.cnf /etc/mysql/mariadb.conf.d/50-server.cnf
 # RUN rm -rf /var/lib/mysql
 # RUN mkdir var/lib/mysql
 CMD ["bash", "start.sh"]
+
+
+
+#RUN service mysql start && 
+#RUN service mysql start && sleep 2 && mysql --user=root --password=fibo < /wdpress.sql
+#RUN service mysql start && sleep 2 && mysql --user=root --password=fibo < /wpdb_backup.sql
+#RUN service mysql start && sleep 2 && mysql --user=root --password=fibo < /fixroot.sql && service mysql restart
+##RUN service mysql start &&  mysqld --init-file='/wpdb_create.sql'
+#CMD ["mysqld"]
 #CMD ["sleep", "infinity"]

@@ -30,7 +30,7 @@ services:
                         - v_mariadb:/var/lib/mysql
                 networks:
                         - n_local
-                restart: unless-stopped
+                restart: always
                 env_file:        
                         - .env
 
@@ -40,12 +40,12 @@ volumes:
                 driver_opts:
                         type: none
                         o: "bind"
-                        device: "wordpress/wp_mount"
+                        device: "/home/hgrissen/data/wp_mount"
         v_mariadb:
                 driver: local
                 driver_opts:
                         type: none
                         o: "bind"
-                        device: "mariadb/mariadb_mount"
+                        device: "/home/hgrissen/data/mariadb_mount"
 networks:
         n_local:

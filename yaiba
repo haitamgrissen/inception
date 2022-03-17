@@ -1,0 +1,41 @@
+SRC				=	srcs
+
+VOL_DIR			=	/home/$USER/data
+
+CONTAINERS		=	${shell docker container list -aq}
+
+IMAGES			=	${shell docker image list -aq}
+
+VOLUMES			=	${shell docker volume list -q}
+
+
+c_images:
+					docker rmi -f ${IMAGES}
+
+create_volumes:
+					sudo userdel www-data && sudo useradd -u 82 www-data
+					sudo mkdir -p $(VOL_DIR)/mariadb 
+					# sudo chown -R mysql:mysql $(VOL_DIR)/mariadb
+					sudo mkdir -p $(VOL_DIR)/wordpress 
+					sudo chown -R www-data:www-data $(VOL_DIR)/wordpress
+
+up:					
+					docker-compose -f $(SRC)/docker-compose.yml up --build -d
+
+down:
+					docker-compose -f $(SRC)/docker-compose.yml down
+					
+clean:
+					docker-compose -f $(SRC)/docker-compose.yml down --rmi all
+
+fclean:				clean
+					docker volume rm -f ${VOLUMES}
+					sudo rm -rf $(VOL_DIR)/mariadb
+					sudo rm -rf $(VOL_DIR)/wordpress
+					sudo rm -rf $(VOL_DIR)
+					# docker network rm ${NETWORKS}
+
+debug:
+	@echo ${CONTAINERS}
+	@echo ${IMAGES}
+	@echo ${VOLUMES}
