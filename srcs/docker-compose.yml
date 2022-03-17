@@ -1,0 +1,51 @@
+services:
+
+        nginx:
+                build: nginx
+                ports:
+                        - 443:443
+                volumes:
+                        - v_wordpress:/wordpress
+                networks:
+                        - n_local
+                restart: unless-stopped
+
+        wordpress: 
+                build: wordpress
+                ports:
+                        - 9000:9000
+                volumes:
+                        - v_wordpress:/wordpress
+                networks:
+                        - n_local
+                restart: unless-stopped
+                env_file:        
+                        - .env
+
+        mariadb:
+                build: mariadb
+                ports:
+                        - 3306:3306
+                volumes:
+                        - v_mariadb:/var/lib/mysql
+                networks:
+                        - n_local
+                restart: unless-stopped
+                env_file:        
+                        - .env
+
+volumes:
+        v_wordpress:
+                driver: local
+                driver_opts:
+                        type: none
+                        o: "bind"
+                        device: "wordpress/wp_mount"
+        v_mariadb:
+                driver: local
+                driver_opts:
+                        type: none
+                        o: "bind"
+                        device: "mariadb/mariadb_mount"
+networks:
+        n_local:
