@@ -5,20 +5,20 @@ services:
                 ports:
                         - 443:443
                 volumes:
-                        - v_wordpress:/wordpress
+                        - v_wordpress:/var/www/html/wordpress
                 networks:
                         - n_local
-                restart: unless-stopped
+                restart: always
 
         wordpress: 
                 build: wordpress
                 ports:
                         - 9000:9000
                 volumes:
-                        - v_wordpress:/wordpress
+                        - v_wordpress:/var/www/html/wordpress
                 networks:
                         - n_local
-                restart: unless-stopped
+                restart: always
                 env_file:        
                         - .env
 

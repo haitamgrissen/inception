@@ -13,8 +13,8 @@ CMD ["bash", "start.sh"]
 
 
 #RUN service mysql start && 
-#RUN service mysql start && sleep 2 && mysql --user=root --password=fibo < /wdpress.sql
-#RUN service mysql start && sleep 2 && mysql --user=root --password=fibo < /wpdb_backup.sql
+#RUN service mysql start && sleep 2 && mysql --user=root --password=fibo < /init.sql 
+#RUN service mysql start && sleep 2 && mysql --user=root --password=fibo < / // back up sql file
 #RUN service mysql start && sleep 2 && mysql --user=root --password=fibo < /fixroot.sql && service mysql restart
 ##RUN service mysql start &&  mysqld --init-file='/wpdb_create.sql'
 #CMD ["mysqld"]

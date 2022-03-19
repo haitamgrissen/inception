@@ -6,7 +6,7 @@ server {
     ssl_certificate_key /etc/nginx/ssl/nginx.key;
 	ssl_protocols TLSv1.2 TLSv1.3;
 	
-	root /wordpress;
+	root  /var/www/html/wordpress;
 
 	index index.html index.htm index.php index.nginx-debian.html;
 
