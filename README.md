@@ -6,12 +6,9 @@ You will virtualize several Docker images, creating them in your new personal vi
 ### Discription of mandatory part
 This project consists in having you set up a small infrastructure composed of different services under specific rules.
 
-<img align="left" src="img/docker.svg" height="70">
-<img align="left" src="img/mariadb.svg" height="70">
-<img align="left" src="img/wordpress.svg" height="70">
-<img align="left" src="img/nginx.svg" height="70">
 
-![basic](img/basic.png)
+
+![basic](./basic.png)
 
 #### Rules:
 - This project need to be done on a Virtual Machine.
